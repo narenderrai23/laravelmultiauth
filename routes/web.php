@@ -17,4 +17,25 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
+
+
+Route::get('/admin/dashboard', function () {
+    return view('admin.dashboard');
+})->middleware(['auth:admin'])->name('admin.dashboard');
+
+require __DIR__ . '/adminauth.php';
+
+
+Route::get('/branch/dashboard', function () {
+    return view('branch.dashboard');
+})->middleware(['auth:branch'])->name('branch.dashboard');
+
+require __DIR__ . '/branchauth.php';
+
+
+Route::get('/editor/dashboard', function () {
+    return view('editor.dashboard');
+})->middleware(['auth:editor'])->name('editor.dashboard');
+
+require __DIR__ . '/editorauth.php';

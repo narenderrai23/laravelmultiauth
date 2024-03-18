@@ -40,6 +40,18 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+        'branch' => [
+            'driver' => 'session',
+            'provider' => 'branches',
+        ],
+        'editor' => [
+            'driver' => 'session',
+            'provider' => 'editors',
+        ],
     ],
 
     /*
@@ -63,6 +75,21 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\User::class),
+        ],
+
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', App\Models\Admin::class),
+        ],
+
+        'branches' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', App\Models\Branch::class),
+        ],
+
+        'editors' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', App\Models\Editor::class),
         ],
 
         // 'users' => [
