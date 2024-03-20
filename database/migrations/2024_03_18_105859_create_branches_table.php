@@ -13,10 +13,24 @@ return new class extends Migration
     {
         Schema::create('branches', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
+
+            $table->unsignedBigInteger('city_id');
+            $table->foreign('city_id')->references('id')->on('cities');
+            $table->string('code', 20)->unique();
+            $table->string('name', 100);
+            $table->string('head', 100);
+            $table->enum('category', ['authorized', 'training', 'learning']);
+            $table->string('phone', 20);
+            $table->date('joining_date',);
+            $table->date('till_date');
+            $table->text('address');
+            $table->text('c_address');
+            $table->string('email', 100)->unique();
+            $table->string('password', 255);
+            $table->integer('reset_otp')->nullable();
+            $table->timestamp('reset_otp_timestamp')->useCurrent();
+            $table->string('profile_image')->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });
